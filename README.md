@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="cc-ra — Claude Code Rust Analyzer" width="100%"/>
+</p>
+
 # cc-ra — Claude Code Rust Analyzer v0.3
 
 > Rust 워크스페이스의 **고난이도 논리·설계 오류**를 8개 사고 포지션의 다관점 AI 분석으로 탐지.
