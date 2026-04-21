@@ -99,6 +99,160 @@
     <circle cx="1160" cy="45"  r="1.3"><animate attributeName="cy" values="45;60;45"    dur="8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.2;0.8;0.2"  dur="8s" repeatCount="indefinite"/></circle>
   </g>
 
+  <!-- ═══════════════ CODE ANALYSIS TRACER ═══════════════ -->
+  <!-- cc-ra 핵심: 심볼릭 코드 추적 → Divergence 탐지. 실제 MSharp에서 발견된 버그 재현 -->
+  <g transform="translate(755, 178)" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.93" begin="0.7s" dur="1.2s" fill="freeze"/>
+
+    <!-- Editor panel -->
+    <rect x="-192" y="-107" width="384" height="214" rx="7"
+          fill="#0a0e14" stroke="#21262d" stroke-width="1.2" opacity="0.88"/>
+    <rect x="-192" y="-107" width="384" height="22" rx="7" fill="#161b22"/>
+    <rect x="-192" y="-91"  width="384" height="6"  fill="#161b22"/>
+    <circle cx="-178" cy="-96" r="4" fill="#FC8181" opacity="0.70"/>
+    <circle cx="-165" cy="-96" r="4" fill="#F6AD55" opacity="0.70"/>
+    <circle cx="-152" cy="-96" r="4" fill="#68D391" opacity="0.70"/>
+    <text x="-138" y="-91" font-family="ui-monospace,monospace" font-size="9" fill="#6e7681">src/editor.rs — symbolic trace active</text>
+
+    <!-- Line 1 -->
+    <g transform="translate(0,-74)">
+      <text x="-182" y="5" font-family="ui-monospace,monospace" font-size="9" fill="#3d444d">1</text>
+      <rect x="-170" y="-6" width="22" height="12" rx="2" fill="#553c9a" opacity="0.85"/>
+      <rect x="-142" y="-6" width="55" height="12" rx="2" fill="#1d3d7a" opacity="0.70"/>
+      <rect x="-81"  y="-6" width="12" height="12" rx="2" fill="#21262d" opacity="0.75"/>
+      <rect x="-63"  y="-6" width="48" height="12" rx="2" fill="#1a3a2a" opacity="0.70"/>
+      <rect x="-9"   y="-6" width="10" height="12" rx="2" fill="#21262d" opacity="0.75"/>
+      <rect x="7"    y="-6" width="14" height="12" rx="2" fill="#21262d" opacity="0.75"/>
+    </g>
+
+    <!-- Line 2 -->
+    <g transform="translate(0,-51)">
+      <text x="-182" y="5" font-family="ui-monospace,monospace" font-size="9" fill="#3d444d">2</text>
+      <rect x="-170" y="-6" width="14" height="12" rx="2" fill="#0a0e14" opacity="0.10"/>
+      <rect x="-150" y="-6" width="24" height="12" rx="2" fill="#553c9a" opacity="0.85"/>
+      <rect x="-120" y="-6" width="42" height="12" rx="2" fill="#b45309" opacity="0.65"/>
+      <rect x="-72"  y="-6" width="8"  height="12" rx="2" fill="#21262d" opacity="0.75"/>
+      <rect x="-58"  y="-6" width="80" height="12" rx="2" fill="#1a2633" opacity="0.70"/>
+    </g>
+
+    <!-- Line 3 -->
+    <g transform="translate(0,-28)">
+      <text x="-182" y="5" font-family="ui-monospace,monospace" font-size="9" fill="#3d444d">3</text>
+      <rect x="-170" y="-6" width="14" height="12" rx="2" fill="#0a0e14" opacity="0.10"/>
+      <rect x="-150" y="-6" width="38" height="12" rx="2" fill="#553c9a" opacity="0.85"/>
+      <rect x="-106" y="-6" width="58" height="12" rx="2" fill="#b45309" opacity="0.65"/>
+      <rect x="-42"  y="-6" width="10" height="12" rx="2" fill="#21262d" opacity="0.75"/>
+    </g>
+
+    <!-- Line 4 · BUG-A: seek_match fires after editor.show → Category A Temporal -->
+    <g transform="translate(0,-5)">
+      <text x="-182" y="5" font-family="ui-monospace,monospace" font-size="9" fill="#3d444d">4</text>
+      <rect x="-170" y="-6" width="28" height="12" rx="2" fill="#0a0e14" opacity="0.10"/>
+      <rect x="-136" y="-6" width="52" height="12" rx="2" fill="#1a2633" opacity="0.70"/>
+      <rect x="-78"  y="-6" width="16" height="12" rx="2" fill="#21262d" opacity="0.75"/>
+      <rect x="-56" y="-7" width="96" height="14" rx="2">
+        <animate attributeName="fill"
+                 values="#1a2633;#1a2633;#7a3a00;#aa5500;#7a3a00;#1a2633;#1a2633"
+                 keyTimes="0;0.33;0.37;0.41;0.45;0.48;1" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="stroke"
+                 values="none;none;#F6AD55;#F6E05E;#F6AD55;none;none"
+                 keyTimes="0;0.33;0.37;0.41;0.45;0.48;1" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-width"
+                 values="0;0;1.2;1.8;1.2;0;0"
+                 keyTimes="0;0.33;0.37;0.41;0.45;0.48;1" dur="9s" repeatCount="indefinite"/>
+      </rect>
+      <text x="-55" y="4" font-family="ui-monospace,monospace" font-size="8">
+        <animate attributeName="fill"
+                 values="#3d5268;#3d5268;#F6AD55;#ffe0a0;#F6AD55;#3d5268;#3d5268"
+                 keyTimes="0;0.33;0.37;0.41;0.45;0.48;1" dur="9s" repeatCount="indefinite"/>
+        seek_match(ctx)
+      </text>
+      <g opacity="0">
+        <animate attributeName="opacity"
+                 values="0;0;1;1;1;0;0"
+                 keyTimes="0;0.35;0.38;0.43;0.47;0.50;1" dur="9s" repeatCount="indefinite"/>
+        <rect x="44" y="-7" width="36" height="13" rx="2" fill="#7a3a00"/>
+        <text x="46" y="4" font-family="ui-monospace,monospace" font-size="8" fill="#F6AD55" font-weight="700">CAT-A</text>
+      </g>
+    </g>
+
+    <!-- Line 5: normal arm -->
+    <g transform="translate(0,18)">
+      <text x="-182" y="5" font-family="ui-monospace,monospace" font-size="9" fill="#3d444d">5</text>
+      <rect x="-170" y="-6" width="28" height="12" rx="2" fill="#0a0e14" opacity="0.10"/>
+      <rect x="-136" y="-6" width="44" height="12" rx="2" fill="#1a2633" opacity="0.70"/>
+      <rect x="-86"  y="-6" width="16" height="12" rx="2" fill="#21262d" opacity="0.75"/>
+      <rect x="-64"  y="-6" width="68" height="12" rx="2" fill="#1a2633" opacity="0.70"/>
+    </g>
+
+    <!-- Line 6 · BUG-C: scroll_y = 0.0 → Category C State Coupling Gap -->
+    <g transform="translate(0,41)">
+      <text x="-182" y="5" font-family="ui-monospace,monospace" font-size="9" fill="#3d444d">6</text>
+      <rect x="-170" y="-6" width="28" height="12" rx="2" fill="#0a0e14" opacity="0.10"/>
+      <rect x="-136" y="-6" width="56" height="12" rx="2" fill="#1a2633" opacity="0.70"/>
+      <rect x="-74"  y="-6" width="16" height="12" rx="2" fill="#21262d" opacity="0.75"/>
+      <rect x="-52" y="-7" width="96" height="14" rx="2">
+        <animate attributeName="fill"
+                 values="#1a2633;#1a2633;#4a1a1a;#7a1a1a;#4a1a1a;#1a2633;#1a2633"
+                 keyTimes="0;0.42;0.46;0.50;0.54;0.57;1" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="stroke"
+                 values="none;none;#FC8181;#ff6060;#FC8181;none;none"
+                 keyTimes="0;0.42;0.46;0.50;0.54;0.57;1" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-width"
+                 values="0;0;1.2;1.8;1.2;0;0"
+                 keyTimes="0;0.42;0.46;0.50;0.54;0.57;1" dur="9s" repeatCount="indefinite"/>
+      </rect>
+      <text x="-51" y="4" font-family="ui-monospace,monospace" font-size="8">
+        <animate attributeName="fill"
+                 values="#3d5268;#3d5268;#FC8181;#ffaaaa;#FC8181;#3d5268;#3d5268"
+                 keyTimes="0;0.42;0.46;0.50;0.54;0.57;1" dur="9s" repeatCount="indefinite"/>
+        scroll_y = 0.0
+      </text>
+      <g opacity="0">
+        <animate attributeName="opacity"
+                 values="0;0;1;1;1;0;0"
+                 keyTimes="0;0.44;0.47;0.52;0.56;0.59;1" dur="9s" repeatCount="indefinite"/>
+        <rect x="48" y="-7" width="36" height="13" rx="2" fill="#4a1a1a"/>
+        <text x="50" y="4" font-family="ui-monospace,monospace" font-size="8" fill="#FC8181" font-weight="700">CAT-C</text>
+      </g>
+    </g>
+
+    <!-- Line 7 -->
+    <g transform="translate(0,64)">
+      <text x="-182" y="5" font-family="ui-monospace,monospace" font-size="9" fill="#3d444d">7</text>
+      <rect x="-170" y="-6" width="10" height="12" rx="2" fill="#21262d" opacity="0.75"/>
+      <rect x="-154" y="-6" width="118" height="12" rx="2" fill="#1c2128" opacity="0.60"/>
+    </g>
+
+    <!-- Scan beam -->
+    <rect y="-87" width="12" height="174" rx="3" fill="#B794F6" opacity="0">
+      <animate attributeName="x"
+               values="-192;180;180;-192" keyTimes="0;0.72;0.73;1"
+               dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="opacity"
+               values="0.13;0.13;0;0" keyTimes="0;0.72;0.73;1"
+               dur="9s" repeatCount="indefinite"/>
+    </rect>
+    <rect y="-87" width="2" height="174" rx="1" fill="#D6BCFA" opacity="0">
+      <animate attributeName="x"
+               values="-192;180;180;-192" keyTimes="0;0.72;0.73;1"
+               dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="opacity"
+               values="0.42;0.42;0;0" keyTimes="0;0.72;0.73;1"
+               dur="9s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- findings counter -->
+    <text x="155" y="93" text-anchor="end"
+          font-family="ui-monospace,monospace" font-size="9" fill="#FC8181" opacity="0">
+      <animate attributeName="opacity"
+               values="0;0;0.85;0.85;0;0"
+               keyTimes="0;0.60;0.63;0.74;0.76;1"
+               dur="9s" repeatCount="indefinite"/>
+      ⚡ 2 findings detected
+    </text>
+  </g>
+
   <!-- Title "cc-ra" — per-char reveal + continuous hover-bounce -->
   <g font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Consolas, monospace" font-weight="800" font-size="118" fill="url(#accent)" filter="url(#softGlow)">
     <text x="80" y="190" opacity="0">c
