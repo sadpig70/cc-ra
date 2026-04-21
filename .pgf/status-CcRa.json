@@ -1,0 +1,51 @@
+{
+  "project": "cc-ra",
+  "version": "0.2",
+  "phase": "build_complete",
+  "current_node": "P6_FinalReport",
+  "next_node": "P7_Execute (사용자 invocation 대기)",
+  "summary": { "done": 27, "total": 28 },
+  "started_at": "2026-04-20",
+  "v01_complete": "2026-04-20 (morning)",
+  "v02_complete": "2026-04-20 (evening)",
+  "build_artifacts": {
+    "design_v02": "cc-ra/.pgf/DESIGN-CcRa.md",
+    "workplan_v02": "cc-ra/.pgf/WORKPLAN-CcRa.md",
+    "technical_spec": "cc-ra/cc-ra-technical-specification.md",
+    "skill_source": "cc-ra/skill/",
+    "skill_installed": ".claude/skills/cc-ra/",
+    "python_helpers": "cc-ra/lib/",
+    "readme": "cc-ra/README.md",
+    "final_report_v01": "cc-ra/.pgf/FINAL-REPORT-CcRa-v0.1.md",
+    "final_report_v02": "cc-ra/.pgf/FINAL-REPORT-CcRa-v0.2.md",
+    "pilot": ".cc-ra/decomposition/05_FindReplace.pg.md"
+  },
+  "v02_changes": {
+    "new_phases": ["01_5_feature_reverse", "02_5_scenario_derive", "03_5_design_drift"],
+    "rewritten_phases": ["03_position_analysis"],
+    "new_positions": ["skeptic","paranoid","historian","newcomer","adversary","holist","reductionist","auditor"],
+    "deprecated_personas": ["architect","invariant_hunter","stateful_analyst","algorithms_expert","domain_expert","concurrency_auditor","edge_case_hunter","spec_conformance"],
+    "core_principles": [
+      "feature-based BFS Gantree (not module)",
+      "PG reverse-engineering (code → Gantree + PPR)",
+      "code-only (design docs isolated to Phase 3.5)",
+      "shared analysis (no division of labor)",
+      "thinking positions (not roles, no boundaries)",
+      "symbolic code tracing (not execution)",
+      "recursive PG (analysis itself in PG)"
+    ]
+  },
+  "environment": {
+    "python": "3.11.9",
+    "tree_sitter": "0.25.x",
+    "tree_sitter_rust": "installed",
+    "networkx": "3.5",
+    "cargo": "available",
+    "cargo_modules": "0.26.0 installed"
+  },
+  "remaining": [
+    "P7 사용자 invocation 대기: /cc-ra D:/Tools/MSharp",
+    "실제 분석 실행 → 12 L2 features 역공학 + 8 포지션 분석",
+    "AC-2~5/8/9 검증 (실행 후에만 측정 가능)"
+  ]
+}

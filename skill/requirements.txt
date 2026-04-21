@@ -1,0 +1,13 @@
+# cc-ra Python 헬퍼 의존성
+# 설치: pip install -r requirements.txt
+# Python >= 3.10 필요 (3.11+ 권장 — tomllib stdlib 활용)
+
+# Rust AST 파싱 (symbol_index.py)
+# tree-sitter: 범용 파서 프레임워크
+# tree-sitter-rust: Rust 문법 바인딩
+tree-sitter>=0.23
+tree-sitter-rust>=0.23
+
+# 모듈 그래프 알고리즘 (module_graph.py)
+# 사이클 탐지, 위상 정렬, orphan 노드 탐색에 사용
+networkx>=3.0
