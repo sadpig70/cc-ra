@@ -70,7 +70,7 @@ cargo install cargo-modules
 Claude Code 세션에서:
 
 ```
-/cc-ra D:/path/to/rust/workspace
+/cc-ra /path/to/rust/workspace
 ```
 
 ### 옵션
