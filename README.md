@@ -27,8 +27,8 @@
 | **networkx** | 3.0+ | 모듈 그래프 알고리즘 (사이클·위상정렬) | 위와 동일 |
 
 ```bash
-# Python 의존성 한 번에 설치
-pip install -r D:/Tools/MSharp/cc-ra/skill/requirements.txt
+# Python 의존성 한 번에 설치 (저장소 루트에서)
+pip install -r cc-ra/skill/requirements.txt
 ```
 
 ### 권장
@@ -50,13 +50,14 @@ pip install -r D:/Tools/MSharp/cc-ra/skill/requirements.txt
 ## 설치
 
 ```bash
+# 저장소 루트(cc-ra/ 의 부모)에서 실행
+
 # 1) Python 의존성
-pip install -r D:/Tools/MSharp/cc-ra/skill/requirements.txt
+pip install -r cc-ra/skill/requirements.txt
 
 # 2) Claude Code Skill 설치
-#    cc-ra/skill/ → C:/Users/<user>/.claude/skills/cc-ra/
-"D:/Tools/PS7/7/pwsh.exe" -NoProfile -ExecutionPolicy Bypass -File \
-    D:/Tools/MSharp/cc-ra/install.ps1
+#    cc-ra/skill/ → ~/.claude/skills/cc-ra/  (Windows: %USERPROFILE%\.claude\skills\cc-ra\)
+pwsh -NoProfile -ExecutionPolicy Bypass -File cc-ra/install.ps1
 
 # 3) (권장) cargo-modules
 cargo install cargo-modules
